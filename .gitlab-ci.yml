@@ -11,14 +11,14 @@ stages:
 build-maven:
   stage: build-maven
   script:
-    - cd sifs.framework
+    - cd test.framework
     - mvn clean install
     - ls target
   artifacts:
     paths:
-      - sifs.framework/target/
+      - test.framework/target/
 
 tar-content:
   stage: tar-content
   script:
-    - ls sifs.framework/target/
+    - ls test.framework/target/
