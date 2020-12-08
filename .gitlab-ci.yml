@@ -1,0 +1,24 @@
+image: ip-fci-docker-local.artifactory.swg-devops.com/open-source/ubuntu:16.04
+
+before_script:
+   - apt update -y && apt install -y --no-install-recommends ant maven dos2unix wget sudo zip unzip openssl openjdk-8-jdk
+   - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+
+stages:
+  - build-maven
+  - tar-content
+
+build-maven:
+  stage: build-maven
+  script:
+    - cd sifs.framework
+    - mvn clean install
+    - ls target
+  artifacts:
+    paths:
+      - sifs.framework/target/
+
+tar-content:
+  stage: tar-content
+  script:
+    - ls sifs.framework/target/
