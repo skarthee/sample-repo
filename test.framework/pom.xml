@@ -1,6 +1,6 @@
 <project>
  <modelVersion>4.0.0</modelVersion>
- <groupId>com.ibm.sifs</groupId>
- <artifactId>sifs-framework</artifactId>
+ <groupId>com.test.framework</groupId>
+ <artifactId>test-framework</artifactId>
  <version>1.0</version>
 </project>
