@@ -5,20 +5,44 @@ before_script:
    - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 
 stages:
-  - build-maven
+  - build-maven-demo1
+  - build-maven-demo2
+  - build-maven-demo3
   - tar-content
 
-build-maven:
-  stage: build-maven
+build-maven-demo1:
+  stage: build-maven-demo1
   script:
-    - cd test.framework
-    - mvn clean install
-    - ls target
+    - cd demo1
+    - mvn -s ../settings.xml clean deploy
+    - ls target/
   artifacts:
     paths:
-      - test.framework/target/
+      - demo1/target/
+
+build-maven-demo2:
+  stage: build-maven-demo2
+  script:
+    - cd demo2
+    - mvn -s ../settings.xml clean deploy
+    - ls target/
+  artifacts:
+    paths:
+      - demo2/target/
+
+build-maven-demo3:
+  stage: build-maven-demo3
+  script:
+    - cd demo3
+    - mvn -s ../settings.xml clean deploy
+    - ls target/
+  artifacts:
+    paths:
+      - demo3/target/
 
 tar-content:
   stage: tar-content
   script:
-    - ls test.framework/target/
+    - ls demo1/target/
+    - ls demo2/target/
+    - ls demo3/target
